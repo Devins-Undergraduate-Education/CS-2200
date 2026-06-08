@@ -1,0 +1,23 @@
+CS 2200 Spring 2024
+Homework 2
+
+Name: Devin Fromond
+GT Username: dfromond3
+
+Question 1
+-------------------------
+
+Two parts of jalr:
+1. RA = PC;
+2. PC = AT;
+
+
+For the first part:       lea $ra, 0                   ! LEA: DR = PC + SEXT(PCOffset20), thus $ra = PC
+For the second part:      beq $zero, $zero, target     ! bounded by PCOffset20
+
+--------------------------
+
+ANSWER:
+
+lea $ra, 0
+beq $zero, $zero, target

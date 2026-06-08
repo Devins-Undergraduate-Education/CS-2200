@@ -1,0 +1,46 @@
+CS 2200 Spring 2024
+Project 4
+
+Name: Devin Fromond
+GT Username: dfromond3
+
+Problem 6.1 (FCFS Scheduler)
+----------
+
+Ex Time for 1 CPU(s): 70.2s
+Ex Time for 2 CPU(s): 43.3s
+Ex Time for 4 CPU(s): 37.0s
+
+There is not a linear relationship between the number of CPUs and total execution time. 
+The trend seems to resemble exponential decay since from 1 --> 2 CPUs shows a significant decrease in execution time whereas 2 --> 4 is only slightly less. 
+This effect is present since the program must complete elements that cannot be done via threads - or on other CPUs. Some processes/elements must be completed in a sequence or serially. 
+
+
+Problem 6.2 (Round-Robin)
+----------
+
+Wait Time for 800ms timeslice: 317.1s
+Wait Time for 600ms timeslice: 302.3s
+Wait Time for 400ms timeslice: 291.7s
+Wait Time for 200ms timeslice: 284.4s
+
+As the timeslice becomes shorter, the total waiting time appears to decrease, approaching a horizontal aspymptote. 
+The shortest timeslice as possible is likely not the best choice since the CPU will be preoccupied switching processes and therefore will experienced reduce work completed. 
+
+
+
+Problem 6.3 (Preemptive Priority)
+----------
+
+Such as what we implemented, OS systems can mitigate starvation in a priority scheduler by introducing aging.
+With aging, we avoid starvation by artificially assigning higher priority values (through a formula) to lower priority processes which have been starved. 
+
+
+Problem 6.4 (The Priority Inversion Problem)
+---------
+
+To accomplish such, we are able to utilize the concept of priority inheritance. 
+This policy assigns the priority level of the high-priority task to the low-priority task.
+Once the high-priority task finishes running, the low-priority task will revert to its original level. 
+
+In detail, when a thread attempts to acquire a mutex using this protocol and encounters blocking, the mutex's current owner temporarily assumes the priority of the blocked thread, but only if the blocked thread's priority is higher than the owner's. The original priority of the owner is restored upon releasing the mutex.
